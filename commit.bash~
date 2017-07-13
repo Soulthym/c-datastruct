@@ -8,6 +8,4 @@ else
 	git commit -m "$*"
 fi
 git status
-echo "soulthym"
-echo "Thybault7982"
-git push origin master
+git push
