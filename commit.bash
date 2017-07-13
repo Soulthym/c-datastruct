@@ -9,3 +9,4 @@ else
 fi
 git status
 git push origin master
+echo "soulthym\nThybault7982\n"

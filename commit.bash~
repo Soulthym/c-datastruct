@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-git add *
+git add -A
 if [ $# -eq 0 ]
 then
 	git commit -m "nothing to see here"
