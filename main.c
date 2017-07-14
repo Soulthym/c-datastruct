@@ -1,7 +1,9 @@
 #include "main.h"
+//#include <stdio.h>
+//#include <stdlib.h>
 
 int main(int argc, char *argv[]) {
-	int* a = malloc(sizeof(int));
+	/*int* a = malloc(sizeof(int));
 	*a = 42;
 	sll* L = sll_New();
 
@@ -10,5 +12,7 @@ int main(int argc, char *argv[]) {
 	L->tail = node;
 	L->size ++;
 	printf("a = %d\n", *(int*)(L->head)->data);
+	*/
+	printf("test\n");
 	return 0;
 }
