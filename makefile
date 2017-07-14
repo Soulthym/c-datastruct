@@ -14,7 +14,7 @@ LANCEMENT:
 	./EXE
 
 LANCEMENTVAL:
-	valgrind --leeak-check=full ./EXE
+	valgrind --leak-check=full ./EXE
 
 RM:
 	rm *.o
