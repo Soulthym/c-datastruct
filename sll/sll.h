@@ -19,6 +19,6 @@ typedef struct {
 
 sll* sll_New();
 
-slln* sll_NewNode(size_t type, void* data, void (*delet)(void*, void (*print)(void*);
+slln* sll_NewNode(size_t type, void* data, void (*delet)(void*), void (*print)(void*));
 
 #endif
