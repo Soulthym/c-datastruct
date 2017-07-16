@@ -9,6 +9,8 @@ sll* sll_New(){
 		L->head = NULL;
 		L->tail = NULL;
 		L->size = 0;
+		L->append = sll_Append;
+		L->print = sll_Print;
 	}
 	return L;
 }
@@ -23,6 +25,34 @@ slln* sll_NewNode(size_t type, void* data, void (*delet)(void*), void (*print)(v
 		node->print = print;
 	}
 	return node;
+}
+
+slln* sll_Append(sll* L, slln* node) {
+	if (node != NULL && L != NULL) {
+		
+		if (L->size > 0) {
+			L->tail->nxt = node;
+		} else {
+			L->head = node;
+		}
+		L->tail = node;
+		L->size ++;
+	}
+	return node;
+}
+
+void sll_Print(sll* L) {
+	slln* curr;
+	
+	printf("%p : \n\thead: %p\n\ttail: %p\n\tsize: %zu\ndata:\n[",L,L->head,L->tail,L->size);
+	for(curr = L->head; curr != NULL; curr = curr->nxt) {
+		curr->print(curr->data);
+		if (curr != L->tail){
+			printf(", ");
+		} else {
+			printf("]");
+		}
+	}
 }
 
 #endif
