@@ -11,18 +11,19 @@ sll* sll_New(){
 		L->size = 0;
 		L->append = sll_Append;
 		L->prepend = sll_Prepend;
+		L->del = sll_Del;
 		L->print = sll_Print;
 	}
 	return L;
 }
 
-slln* sll_NewNode(size_t type, void* data, void (*delet)(void*), void (*print)(void*)){
+slln* sll_NewNode(size_t type, void* data, void (*del)(void*), void (*print)(void*)){
 	slln* node = NULL;
 	node = malloc(sizeof(slln));
 	if (node){
 		node->type = type;
 		node->data = data;
-		node->delet = delet;
+		node->del = del;
 		node->print = print;
 	}
 	return node;
@@ -65,6 +66,18 @@ void sll_Print(sll* L) {
 		} else {
 			printf("]");
 		}
+	}
+}
+
+void sll_DelNode(slln* N){
+	N->del(N);
+	free(N);
+}
+
+void sll_Del(sll* L){
+	slln* curr;
+	for(curr = L->head; curr != NULL ;curr = curr->nxt){
+		sll_DelNode(curr);
 	}
 }
 

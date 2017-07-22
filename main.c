@@ -52,5 +52,6 @@ int main(int argc, char *argv[]) {
 	((cpx*)L->prepend(L,N)->data)->Set(N->data,5,0);
 
 	L->print(L);
+	L->del(L);
 	return 0;
 }
