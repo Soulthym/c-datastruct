@@ -10,6 +10,7 @@ sll* sll_New(){
 		L->tail = NULL;
 		L->size = 0;
 		L->append = sll_Append;
+		L->prepend = sll_Prepend;
 		L->print = sll_Print;
 	}
 	return L;
@@ -37,6 +38,18 @@ slln* sll_Append(sll* L, slln* node) {
 		}
 		L->tail = node;
 		L->size ++;
+	}
+	return node;
+}
+
+slln* sll_Prepend(sll* L, slln* node){
+	if (node != NULL && L != NULL) {
+		node->nxt = L->head;
+		if (L->size == 0){
+			L->tail = node;
+		}
+		L->head = node;
+		L->size++;
 	}
 	return node;
 }
