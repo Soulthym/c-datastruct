@@ -3,36 +3,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct sllnode{
+typedef struct slln_ {
 	size_t type;
 	void* data;
 	void (*del)(void*);
 	void (*print)(void*);
-	struct sllnode *nxt;
-}slln;
+	struct slln_ *nxt;
+}slln_;
 
-typedef struct sll{
+typedef struct sll_{
 	size_t size;
-	slln *head;
-	slln *tail;
-	slln* (*append)(struct sll* L, slln* node);
-	slln* (*prepend)(struct sll* L, slln* node);
-	void (*del)(struct sll* L);
-	void (*print)(struct sll*);
-}sll;
+	slln_ *head;
+	slln_ *tail;
+	slln_ *curr;
+}sll_;
 
-sll* sll_New();
+struct sll {
+    void (*func) (void);
+};
 
-slln* sll_NewNode(size_t type, void* data, void (*delet)(void*), void (*print)(void*));
-
-slln* sll_Append(sll* L, slln* node);
-
-slln* sll_Prepend(sll* L, slln* node);
-
-void sll_Print(sll* L);
-
-void sll_DelNode(slln* N);
-
-void sll_Del(sll* L);
-
+extern const struct sll sll;
 #endif
