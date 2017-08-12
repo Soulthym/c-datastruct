@@ -1,7 +1,9 @@
 #ifndef _SLL_H_
 #define	_SLL_H_
+#define DEBUG 0
 #include <stdlib.h>
 #include <stdio.h>
+
 
 typedef struct slln_ {
 	size_t type;
@@ -9,18 +11,28 @@ typedef struct slln_ {
 	void (*del)(void*);
 	void (*print)(void*);
 	struct slln_ *nxt;
-}slln_;
+}slln;
 
-typedef struct sll_{
+typedef struct{
 	size_t size;
-	slln_ *head;
-	slln_ *tail;
-	slln_ *curr;
-}sll_;
+	slln *head;
+	slln *tail;
+	slln *curr;
+}sll;
 
 struct sll {
-    void (*func) (void);
+    sll* (*new) (void);
+	slln* (*append) (sll*, slln*);
+	slln* (*prepend) (sll*, slln*);
+	sll* (*empty) (sll*);
+	void (*del) (sll*);
+	void (*print) (sll*);
+	void (*delhead) (sll*);
 };
+extern const struct sll SLL;
 
-extern const struct sll sll;
+struct slln {
+	slln* (*new) (size_t type, void *data, void (*del)(void*), void (*print)(void*));
+};
+extern const struct slln SLLN;
 #endif
