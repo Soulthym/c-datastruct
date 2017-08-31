@@ -65,6 +65,17 @@ slln* prepend(sll* L, slln* N) {
 	return NULL;
 }
 
+slln* insert(sll* L, slln* N, slln* prev) {
+	if (L != NULL) {
+		if (prev != NULL) {
+			prev->nxt = 
+		} else {
+			prepend(L, N);
+		}
+	}
+	return N;
+}
+
 void delnode(slln* N) {
 	N->del(N->data);
 	free(N);
@@ -132,6 +143,7 @@ const struct sll SLL = {
     .new = new,
 	.append = append,
 	.prepend = prepend,
+	.insert = insert,
 	.empty = empty,
 	.del = del,
 	.delhead = delhead,
