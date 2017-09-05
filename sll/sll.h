@@ -24,7 +24,8 @@ struct sll {
     sll* (*new) (void);
 	slln* (*append) (sll*, slln*);
 	slln* (*prepend) (sll*, slln*);
-	slln* (*insert) (sll*, slln*, int);
+	slln* (*insert) (sll*, slln*, slln*);
+	slln* (*get) (sll*, int);
 	sll* (*empty) (sll*);
 	void (*del) (sll*);
 	void (*print) (sll*);

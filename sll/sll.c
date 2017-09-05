@@ -67,13 +67,36 @@ slln* prepend(sll* L, slln* N) {
 
 slln* insert(sll* L, slln* N, slln* prev) {
 	if (L != NULL) {
-		if (prev != NULL) {
-			prev->nxt = 
+		if (prev != NULL && prev != L->tail) {
+			N->nxt = prev->nxt;
+			prev->nxt = N;
+			L->size ++;
+			#if DEBUG
+				printf("inserted node at %p after %p\n",N,prev);
+			#endif
+		} else if (prev == L->tail) {
+			append(L, N);
 		} else {
 			prepend(L, N);
 		}
 	}
 	return N;
+}
+
+slln* get(sll* L, int pos) {
+	if (pos >= L->size || pos < 0) {
+		#if DEBUG
+			printf("L[%d] is out of range [0..%d]\n", pos, L->size-1);
+		#endif
+		return NULL;
+	}
+	slln *curr;
+	int n;
+	for (curr = L->head, n = pos; curr != NULL && n != 0; n--, curr = curr->nxt) {}
+	#if DEBUG
+		printf("&L[%d] = %p\n", pos, curr);
+	#endif
+	return curr;
 }
 
 void delnode(slln* N) {
@@ -136,6 +159,7 @@ void print(sll* L) {
 	}
 	#if DEBUG
 		printf("printed list at %p\n", L);
+		printf("\thead %p\n\ttail %p\n\tsize%d\n", L->head, L->tail, L->size);
 	#endif
 }
 
@@ -144,10 +168,11 @@ const struct sll SLL = {
 	.append = append,
 	.prepend = prepend,
 	.insert = insert,
+	.get = get,
 	.empty = empty,
 	.del = del,
 	.delhead = delhead,
-	.print = print
+	.print = print,
 };
 
 const struct slln SLLN = {
