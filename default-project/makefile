@@ -1,8 +1,8 @@
 ALL: EXE LANCEMENT RM
 DEBUG: EXE LANCEMENTVAL RM
 
-libs.o: lib/libs.c lib/libs.h
-	gcc -Wall -o libs.o -c lib/libs.c -g -lm
+libs.o: libs.c libs.h
+	gcc -Wall -o libs.o -c libs.c -g -lm
 
 main.o: main.c main.h
 	gcc -Wall -o main.o -c main.c -g -lm

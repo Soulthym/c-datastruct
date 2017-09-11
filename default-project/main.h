@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "lib/libs.h"
+#include "libs.h"
 
 void delInt(void *d) {
 	free(d);
